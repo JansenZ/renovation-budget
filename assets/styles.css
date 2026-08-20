@@ -13,6 +13,7 @@
   --content: min(980px, calc(100vw - 40px));
   --serif: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif;
   --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --numeric: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 * {
@@ -1308,6 +1309,20 @@ main,
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   text-align: right;
+}
+
+.overall-breakdown dd,
+.summary-value,
+.reference-metric strong,
+.group-total strong,
+.expense-total,
+.finalist-price,
+[data-overall-value],
+[data-mortgage-value],
+[data-purchase-unit-price] {
+  font-family: var(--numeric);
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .footer {
