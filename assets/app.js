@@ -290,6 +290,10 @@ const renderAnalysis = () => {
   const smart = summary.sourceGroups.find(group => group.id === 'smart');
   const appliances = summary.sourceGroups.find(group => group.id === 'appliances');
   const contractCoverage = formatPercent(contract.total, hard.total);
+  const pendingSoftTotal = expenseGroups
+    .flatMap(group => group.items)
+    .filter(entry => entry.status === 'later' && entry.space === 'soft')
+    .reduce((total, entry) => total + itemTotal(entry), 0);
 
   const observations = [
     {
@@ -306,7 +310,7 @@ const renderAnalysis = () => {
     },
     {
       title: '待购项目维持延后更合适',
-      text: `${summary.laterCount} 项合计 ${formatCurrency(summary.laterTotal)}，其中 ${formatCurrency(9500)} 仍保留在家具软装分类。冰箱和小家电可以等促销，定制项适合入住后确认习惯和尺寸再下单。`
+      text: `${summary.laterCount} 项合计 ${formatCurrency(summary.laterTotal)}，其中 ${formatCurrency(pendingSoftTotal)} 仍保留在家具软装分类。冰箱和小家电可以等促销，其余项目可在入住后按实际需求决定。`
     }
   ];
 

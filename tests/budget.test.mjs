@@ -75,10 +75,37 @@ test('decision history preserves all seven candidates left after three screening
   assert.equal(dataModule.homeCandidates.find(candidate => candidate.selected).purchasePrice, 2600000);
 });
 
-test('the canonical list has 113 unique items', () => {
+test('the canonical list has 116 unique items', () => {
   const items = flattenItems(expenseGroups);
-  assert.equal(items.length, 113);
-  assert.equal(new Set(items.map(item => item.id)).size, 113);
+  assert.equal(items.length, 116);
+  assert.equal(new Set(items.map(item => item.id)).size, 116);
+});
+
+test('recent purchases use their actual prices and are no longer marked for later', () => {
+  const itemsById = new Map(flattenItems(expenseGroups).map(entry => [entry.id, entry]));
+  const expectedTotals = {
+    'later-enamel-board': 2920,
+    'later-shoe-cabinet': 330,
+    'furniture-study-drawers': 500,
+    'furniture-coffee-table': 400,
+    'later-pegboard': 400,
+    'later-door-mat': 200,
+    'later-bay-cabinet': 300,
+    'furniture-entry-mirror': 200,
+    'furniture-bay-window-set': 300,
+    'furniture-wall-clock': 100
+  };
+
+  for (const [id, total] of Object.entries(expectedTotals)) {
+    const purchasedItem = itemsById.get(id);
+    assert.ok(purchasedItem, `${id} should exist`);
+    assert.notEqual(purchasedItem.status, 'later', `${id} should be purchased`);
+    assert.equal(itemTotal(purchasedItem), total, `${id} should use the actual purchase price`);
+  }
+
+  assert.deepEqual(itemsById.get('later-enamel-board').extras, [
+    { label: '安装费', amount: 120 }
+  ]);
 });
 
 test('source groups reproduce the supplied subtotals', () => {
@@ -88,45 +115,43 @@ test('source groups reproduce the supplied subtotals', () => {
     finishes: 15715,
     smart: 6249,
     appliances: 44788,
-    furniture: 38611,
-    later: 18400
+    furniture: 37611,
+    later: 14950
   });
 });
 
 test('headline totals separate current and later budgets', () => {
   const summary = buildBudgetSummary(expenseGroups);
-  assert.equal(summary.grandTotal, 421548);
-  assert.equal(summary.currentTotal, 393648);
-  assert.equal(summary.laterTotal, 27900);
-  assert.equal(summary.laterCount, 21);
+  assert.equal(summary.grandTotal, 417098);
+  assert.equal(summary.currentTotal, 399298);
+  assert.equal(summary.laterTotal, 17800);
+  assert.equal(summary.laterCount, 14);
   assert.equal(summary.reserveTotal, 2000);
 });
 
 test('unpurchased furniture stays in soft furnishings but is marked for later', () => {
   const pendingIds = new Set([
-    'furniture-study-drawers',
     'furniture-child-drawers',
     'furniture-sofa-bed',
     'furniture-gaming-chairs',
-    'furniture-coffee-table',
     'furniture-rug'
   ]);
   const pendingFurniture = flattenItems(expenseGroups).filter(item => pendingIds.has(item.id));
-  assert.equal(pendingFurniture.length, 6);
+  assert.equal(pendingFurniture.length, 4);
   assert.ok(pendingFurniture.every(item => item.space === 'soft'));
   assert.ok(pendingFurniture.every(item => item.status === 'later'));
-  assert.equal(pendingFurniture.reduce((sum, item) => sum + itemTotal(item), 0), 9500);
+  assert.equal(pendingFurniture.reduce((sum, item) => sum + itemTotal(item), 0), 7000);
 });
 
 test('space buckets conserve the complete budget', () => {
   const summary = buildBudgetSummary(expenseGroups);
   assert.deepEqual(summary.spaceBuckets.map(({ id, total }) => [id, total]), [
     ['hard', 313500],
-    ['soft', 38611],
+    ['soft', 37611],
     ['tech', 51037],
-    ['later', 18400]
+    ['later', 14950]
   ]);
-  assert.equal(summary.spaceBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 421548);
+  assert.equal(summary.spaceBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 417098);
 });
 
 test('responsibility buckets conserve the complete budget', () => {
@@ -134,7 +159,7 @@ test('responsibility buckets conserve the complete budget', () => {
   assert.deepEqual(summary.responsibilityBuckets.map(({ id, total }) => [id, total]), [
     ['contract', 190000],
     ['contract-outside', 123500],
-    ['owner', 108048]
+    ['owner', 103598]
   ]);
-  assert.equal(summary.responsibilityBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 421548);
+  assert.equal(summary.responsibilityBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 417098);
 });

@@ -19,7 +19,7 @@ const bucketDefinitions = {
     { id: 'hard', name: '硬装', description: '固定施工、门窗、主材和卫浴灯具' },
     { id: 'soft', name: '软装家具', description: '家具、窗帘、装饰和入住用品' },
     { id: 'tech', name: '家电智能', description: '家电、网络与智能家居' },
-    { id: 'later', name: '入住后待购', description: '可推迟到入住后或购物节购买' }
+    { id: 'later', name: '入住后添置', description: '入住后购买或仍可继续推迟的项目' }
   ],
   responsibility: [
     { id: 'contract', name: '装修公司合同内', description: '19 万元硬装合同主体' },
