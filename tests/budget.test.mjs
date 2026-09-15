@@ -84,7 +84,7 @@ test('the canonical list has 116 unique items', () => {
 test('recent purchases use their actual prices and are no longer marked for later', () => {
   const itemsById = new Map(flattenItems(expenseGroups).map(entry => [entry.id, entry]));
   const expectedTotals = {
-    'later-enamel-board': 2920,
+    'later-enamel-board': 2800,
     'later-shoe-cabinet': 330,
     'furniture-study-drawers': 500,
     'furniture-coffee-table': 400,
@@ -100,6 +100,8 @@ test('recent purchases use their actual prices and are no longer marked for late
     const purchasedItem = itemsById.get(id);
     assert.ok(purchasedItem, `${id} should exist`);
     assert.notEqual(purchasedItem.status, 'later', `${id} should be purchased`);
+    assert.equal(purchasedItem.groupId, 'furniture', `${id} should be listed with furniture and soft furnishings`);
+    assert.equal(purchasedItem.space, 'soft', `${id} should count toward furniture and soft furnishings`);
     assert.equal(itemTotal(purchasedItem), total, `${id} should use the actual purchase price`);
   }
 
@@ -115,15 +117,15 @@ test('source groups reproduce the supplied subtotals', () => {
     finishes: 15715,
     smart: 6249,
     appliances: 44788,
-    furniture: 37611,
-    later: 14950
+    furniture: 41641,
+    later: 10800
   });
 });
 
 test('headline totals separate current and later budgets', () => {
   const summary = buildBudgetSummary(expenseGroups);
-  assert.equal(summary.grandTotal, 417098);
-  assert.equal(summary.currentTotal, 399298);
+  assert.equal(summary.grandTotal, 416978);
+  assert.equal(summary.currentTotal, 399178);
   assert.equal(summary.laterTotal, 17800);
   assert.equal(summary.laterCount, 14);
   assert.equal(summary.reserveTotal, 2000);
@@ -147,11 +149,11 @@ test('space buckets conserve the complete budget', () => {
   const summary = buildBudgetSummary(expenseGroups);
   assert.deepEqual(summary.spaceBuckets.map(({ id, total }) => [id, total]), [
     ['hard', 313500],
-    ['soft', 37611],
+    ['soft', 41641],
     ['tech', 51037],
-    ['later', 14950]
+    ['later', 10800]
   ]);
-  assert.equal(summary.spaceBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 417098);
+  assert.equal(summary.spaceBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 416978);
 });
 
 test('responsibility buckets conserve the complete budget', () => {
@@ -159,7 +161,7 @@ test('responsibility buckets conserve the complete budget', () => {
   assert.deepEqual(summary.responsibilityBuckets.map(({ id, total }) => [id, total]), [
     ['contract', 190000],
     ['contract-outside', 123500],
-    ['owner', 103598]
+    ['owner', 103478]
   ]);
-  assert.equal(summary.responsibilityBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 417098);
+  assert.equal(summary.responsibilityBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 416978);
 });

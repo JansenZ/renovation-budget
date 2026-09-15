@@ -182,6 +182,13 @@ export const expenseGroups = [
       item('furniture-entry-mirror', '门口镜子', 200, { space: 'soft', responsibility: 'owner' }),
       item('furniture-bay-window-set', '飘窗垫＋坐垫＋茶桌', 300, { space: 'soft', responsibility: 'owner' }),
       item('furniture-wall-clock', '挂钟', 100, { space: 'soft', responsibility: 'owner' }),
+      item('later-shoe-cabinet', '门口钢制鞋柜', 330, { space: 'soft', responsibility: 'owner' }),
+      item('later-door-mat', '门口地毯', 200, { space: 'soft', responsibility: 'owner' }),
+      item('later-bay-cabinet', '餐厅飘窗抽屉', 300, { space: 'soft', responsibility: 'owner' }),
+      item('later-pegboard', '鞋柜上洞洞板＋配件', 400, { space: 'soft', responsibility: 'owner' }),
+      item('later-enamel-board', '珐琅板＋配件', 2680, {
+        extras: [{ label: '安装费', amount: 120 }], space: 'soft', responsibility: 'owner'
+      }),
       item('furniture-reserve', '未知项备用', 2000, {
         note: '预留预算，尚未视为实际消费', space: 'soft', responsibility: 'owner', status: 'reserve'
       })
@@ -189,24 +196,17 @@ export const expenseGroups = [
   },
   {
     id: 'later',
-    name: '入住后添置与待购',
-    description: '入住后逐步添置；尚未购买的项目继续标记为待购',
+    name: '入住后待购',
+    description: '适合入住后或购物节再购买，尚未计入当前投入',
     items: [
       item('later-fridge', '米家十字门冰箱', 2500, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-oven', '米家烤箱', 1500, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-dehumidifier', '除湿机', 1000, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-toilet-seat', '主卧智能马桶盖', 1500, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-microwave', '微波炉', 500, { space: 'later', responsibility: 'owner', status: 'later' }),
-      item('later-shoe-cabinet', '门口钢制鞋柜', 330, { space: 'later', responsibility: 'owner' }),
-      item('later-door-mat', '门口地毯', 200, { space: 'later', responsibility: 'owner' }),
       item('later-fridge-gap-cabinet', '冰箱边夹缝柜', 500, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-kitchen-rack', '厨用电器架', 700, { space: 'later', responsibility: 'owner', status: 'later' }),
-      item('later-bay-cabinet', '餐厅飘窗抽屉', 300, { space: 'later', responsibility: 'owner' }),
       item('later-balcony-sink', '阳台水池柜', 400, { space: 'later', responsibility: 'owner', status: 'later' }),
-      item('later-pegboard', '鞋柜上洞洞板＋配件', 400, { space: 'later', responsibility: 'owner' }),
-      item('later-enamel-board', '珐琅板＋配件', 2800, {
-        extras: [{ label: '安装费', amount: 120 }], space: 'later', responsibility: 'owner'
-      }),
       item('later-trampoline', '蹦床', 1000, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-disposal', '垃圾处理器', 1200, { space: 'later', responsibility: 'owner', status: 'later' })
     ]
