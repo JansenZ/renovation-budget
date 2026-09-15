@@ -182,6 +182,16 @@ test('page loads its visual system and has accessible navigation hooks', async (
   assert.ok(css.includes('@media (max-width: 640px)'));
 });
 
+test('the page and changed data modules share one cache-busting release token', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const app = await readFile(new URL('../assets/app.js', import.meta.url), 'utf8');
+  const releaseToken = html.match(/assets\/app\.js\?v=([^"']+)/)?.[1];
+
+  assert.ok(releaseToken, 'the top-level module should have a release token');
+  assert.ok(app.includes(`./data.js?v=${releaseToken}`));
+  assert.ok(app.includes(`./budget.js?v=${releaseToken}`));
+});
+
 test('Pages custom domain is exact', async () => {
   const cname = await readFile(new URL('../CNAME', import.meta.url), 'utf8');
   assert.equal(cname.trim(), 'home.zhenglin.vip');

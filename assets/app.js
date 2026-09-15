@@ -4,7 +4,7 @@ import {
   homeCandidates,
   preferenceDimensions,
   screeningStages
-} from './data.js';
+} from './data.js?v=20260915c';
 import { scoreCandidate, sortCandidatesByScore } from './decision.js';
 import { resolveTabName } from './navigation.js';
 import {
@@ -15,7 +15,7 @@ import {
   formatPercent,
   itemTotal,
   roundUnitCost
-} from './budget.js';
+} from './budget.js?v=20260915c';
 
 const summary = buildBudgetSummary(expenseGroups);
 const propertyArea = 165;
