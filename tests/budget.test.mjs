@@ -116,9 +116,8 @@ test('source groups reproduce the supplied subtotals', () => {
     basic: 201525,
     finishes: 15715,
     smart: 6339,
-    appliances: 49208,
-    furniture: 45729,
-    later: 2200
+    appliances: 51408,
+    furniture: 45729
   });
 });
 
@@ -150,8 +149,7 @@ test('space buckets conserve the complete budget', () => {
   assert.deepEqual(summary.spaceBuckets.map(({ id, total }) => [id, total]), [
     ['hard', 313500],
     ['soft', 45729],
-    ['tech', 55547],
-    ['later', 2200]
+    ['tech', 57747]
   ]);
   assert.equal(summary.spaceBuckets.reduce((sum, bucket) => sum + bucket.total, 0), 416976);
 });

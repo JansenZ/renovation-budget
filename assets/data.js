@@ -151,7 +151,9 @@ export const expenseGroups = [
       item('later-toilet-seat', '智米智能马桶盖 2S', 780, { space: 'tech', responsibility: 'owner' }),
       item('later-microwave', '美的微波炉', 400, { space: 'tech', responsibility: 'owner' }),
       item('appliance-steamer', '苏泊尔电蒸锅', 308, { space: 'tech', responsibility: 'owner' }),
-      item('appliance-desk-lamp', '米家台灯 2', 132, { space: 'tech', responsibility: 'owner' })
+      item('appliance-desk-lamp', '米家台灯 2', 132, { space: 'tech', responsibility: 'owner' }),
+      item('later-oven', '烤箱', 1000, { space: 'tech', responsibility: 'owner', status: 'later' }),
+      item('later-disposal', '垃圾处理器', 1200, { space: 'tech', responsibility: 'owner', status: 'later' })
     ]
   },
   {
@@ -215,15 +217,6 @@ export const expenseGroups = [
       item('furniture-sofa-bed', '书房沙发床', 2000, { space: 'soft', responsibility: 'owner', status: 'later' }),
       item('furniture-gaming-chairs', '西昊 B300 Pro 2', 800, { space: 'soft', responsibility: 'owner', status: 'later' }),
       item('furniture-rug', '地毯', 1000, { space: 'soft', responsibility: 'owner', status: 'later' })
-    ]
-  },
-  {
-    id: 'later',
-    name: '入住后待购',
-    description: '适合入住后或购物节再购买，尚未计入当前投入',
-    items: [
-      item('later-trampoline', '蹦床', 1000, { space: 'later', responsibility: 'owner', status: 'later' }),
-      item('later-disposal', '垃圾处理器', 1200, { space: 'later', responsibility: 'owner', status: 'later' })
     ]
   }
 ];
