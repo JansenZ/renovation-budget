@@ -210,8 +210,9 @@ export const expenseGroups = [
       item('furniture-floor-mirrors', '鞋柜镜子', 130, { space: 'soft', responsibility: 'owner' }),
       item('appliance-digital-piano', '罗兰 FP40 电钢琴', 4000, { space: 'soft', responsibility: 'owner' }),
       item('appliance-makeup-mirror', '觅光化妆镜', 115, { space: 'soft', responsibility: 'owner' }),
-      item('furniture-reserve', '未知项备用', 2000, {
-        note: '预留预算，尚未视为实际消费', space: 'soft', responsibility: 'owner', status: 'reserve'
+      item('furniture-reserve', '预留项及未统计杂物', 2000, {
+        note: '包含已花费几百元的零散杂物（多为几十元一件）及尚未使用的预留，合计暂按 2000 元记录',
+        space: 'soft', responsibility: 'owner', status: 'reserve'
       }),
       item('furniture-child-drawers', '儿童房抽屉柜', 500, { space: 'soft', responsibility: 'owner', status: 'later' }),
       item('furniture-sofa-bed', '书房沙发床', 2000, { space: 'soft', responsibility: 'owner', status: 'later' }),

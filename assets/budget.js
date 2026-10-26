@@ -1,6 +1,15 @@
 export const itemTotal = item =>
   item.base + (item.extras ?? []).reduce((sum, extra) => sum + extra.amount, 0);
 
+export const sortExpenseItems = items => {
+  const rank = entry => entry.status === 'later' ? 2 : entry.status === 'reserve' ? 1 : 0;
+  return [...items].sort((a, b) => {
+    const statusOrder = rank(a) - rank(b);
+    if (statusOrder) return statusOrder;
+    return rank(a) === 0 ? itemTotal(b) - itemTotal(a) : 0;
+  });
+};
+
 export const flattenItems = groups => groups.flatMap(group =>
   group.items.map(item => ({ ...item, groupId: group.id, groupName: group.name }))
 );

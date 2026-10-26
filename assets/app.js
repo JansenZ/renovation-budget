@@ -4,7 +4,7 @@ import {
   homeCandidates,
   preferenceDimensions,
   screeningStages
-} from './data.js?v=20261026c';
+} from './data.js?v=20261026d';
 import { scoreCandidate, sortCandidatesByScore } from './decision.js';
 import { resolveTabName } from './navigation.js';
 import {
@@ -14,8 +14,9 @@ import {
   formatCurrency,
   formatPercent,
   itemTotal,
-  roundUnitCost
-} from './budget.js?v=20261026c';
+  roundUnitCost,
+  sortExpenseItems
+} from './budget.js?v=20261026d';
 
 const summary = buildBudgetSummary(expenseGroups);
 const propertyArea = 165;
@@ -48,7 +49,7 @@ const renderSummary = () => {
   const hard = getBucket(summary.spaceBuckets, 'hard');
   const cards = [
     ['完整预算', formatCurrency(summary.grandTotal), `${summary.itemCount} 项`],
-    ['当前已列入', formatCurrency(summary.currentTotal), `含预留 ${formatCurrency(summary.reserveTotal)}`],
+    ['当前已列入', formatCurrency(summary.currentTotal), `含预留及杂物 ${formatCurrency(summary.reserveTotal)}`],
     ['硬装投入', formatCurrency(hard.total), formatPercent(hard.total, summary.grandTotal)],
     ['尚未购买', formatCurrency(summary.laterTotal), `${summary.laterCount} 项`]
   ];
@@ -376,7 +377,7 @@ const renderGroups = () => {
     summaryRow.append(heading, total, toggle);
 
     const list = createElement('ol', 'expense-list');
-    group.items.forEach(entry => list.append(renderExpenseItem(entry)));
+    sortExpenseItems(group.items).forEach(entry => list.append(renderExpenseItem(entry)));
     details.append(summaryRow, list);
     root.append(details);
   });
