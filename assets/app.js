@@ -4,7 +4,7 @@ import {
   homeCandidates,
   preferenceDimensions,
   screeningStages
-} from './data.js?v=20261026';
+} from './data.js?v=20261026b';
 import { scoreCandidate, sortCandidatesByScore } from './decision.js';
 import { resolveTabName } from './navigation.js';
 import {
@@ -15,7 +15,7 @@ import {
   formatPercent,
   itemTotal,
   roundUnitCost
-} from './budget.js?v=20261026';
+} from './budget.js?v=20261026b';
 
 const summary = buildBudgetSummary(expenseGroups);
 const propertyArea = 165;
@@ -310,7 +310,7 @@ const renderAnalysis = () => {
     },
     {
       title: '待购项目维持延后更合适',
-      text: `${summary.laterCount} 项合计 ${formatCurrency(summary.laterTotal)}，其中 ${formatCurrency(pendingSoftTotal)} 仍保留在家具软装分类。烤箱、除湿机等可按实际需求择期购入；剩余家具也可在入住后确认尺寸和使用习惯。`
+      text: `${summary.laterCount} 项合计 ${formatCurrency(summary.laterTotal)}，其中 ${formatCurrency(pendingSoftTotal)} 仍保留在家具软装分类。剩余家具可在入住后确认尺寸和使用习惯；蹦床、垃圾处理器可按实际需求择期购入。`
     }
   ];
 

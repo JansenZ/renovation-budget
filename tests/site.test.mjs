@@ -9,8 +9,8 @@ test('page exposes required semantic regions and metadata', async () => {
   }
   assert.ok(html.includes('width=device-width'));
   assert.ok(html.includes('嘉宝花园装修清单'));
-  assert.ok(html.includes('131项装修'));
-  assert.ok(html.includes('RENOVATION LEDGER · 131 ITEMS'));
+  assert.ok(html.includes('129项装修'));
+  assert.ok(html.includes('RENOVATION LEDGER · 129 ITEMS'));
   assert.ok(!html.includes('113项装修'));
 });
 

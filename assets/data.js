@@ -151,9 +151,7 @@ export const expenseGroups = [
       item('later-toilet-seat', '智米智能马桶盖 2S', 780, { space: 'tech', responsibility: 'owner' }),
       item('later-microwave', '美的微波炉', 400, { space: 'tech', responsibility: 'owner' }),
       item('appliance-steamer', '苏泊尔电蒸锅', 308, { space: 'tech', responsibility: 'owner' }),
-      item('appliance-digital-piano', '罗兰 FP40 电钢琴', 4000, { space: 'tech', responsibility: 'owner' }),
-      item('appliance-desk-lamp', '米家台灯 2', 132, { space: 'tech', responsibility: 'owner' }),
-      item('appliance-makeup-mirror', '觅光化妆镜', 115, { space: 'tech', responsibility: 'owner' })
+      item('appliance-desk-lamp', '米家台灯 2', 132, { space: 'tech', responsibility: 'owner' })
     ]
   },
   {
@@ -184,15 +182,8 @@ export const expenseGroups = [
       item('furniture-baskets', '书柜编织拉篮', 380, { space: 'soft', responsibility: 'owner' }),
       item('furniture-window-film', '卫生间窗户贴膜', 60, { space: 'soft', responsibility: 'owner' }),
       item('furniture-study-drawers', '书房抽屉柜', 500, { space: 'soft', responsibility: 'owner' }),
-      item('furniture-child-drawers', '儿童房抽屉柜', 500, { space: 'soft', responsibility: 'owner', status: 'later' }),
-      item('furniture-sofa-bed', '书房沙发床', 2000, { space: 'soft', responsibility: 'owner', status: 'later' }),
       item('furniture-sihoo-chair', '西昊 B300 Pro 人体工学椅', 700, { space: 'soft', responsibility: 'owner' }),
-      item('furniture-gaming-chairs', '书房椅（剩余 1 把）', 1750, {
-        note: '原两把预算 3500 元；已购西昊另列，剩余一把暂按原预算的一半预留',
-        space: 'soft', responsibility: 'owner', status: 'later'
-      }),
       item('furniture-coffee-table', '茶几', 400, { space: 'soft', responsibility: 'owner' }),
-      item('furniture-rug', '地毯', 1000, { space: 'soft', responsibility: 'owner', status: 'later' }),
       item('furniture-entry-mirror', '门口镜子', 200, { space: 'soft', responsibility: 'owner' }),
       item('furniture-bay-window-set', '飘窗垫＋坐垫＋茶桌', 300, { space: 'soft', responsibility: 'owner' }),
       item('furniture-wall-clock', '挂钟', 100, { space: 'soft', responsibility: 'owner' }),
@@ -214,10 +205,16 @@ export const expenseGroups = [
       item('furniture-study-pegboard', '书房洞洞板', 130, { space: 'soft', responsibility: 'owner' }),
       item('furniture-towel-rack', '卫生间毛巾架', 220, { space: 'soft', responsibility: 'owner' }),
       item('furniture-entry-camping-rack', '门口露营架', 160, { space: 'soft', responsibility: 'owner' }),
-      item('furniture-floor-mirrors', '落地镜 ×2', 330, { space: 'soft', responsibility: 'owner' }),
+      item('furniture-floor-mirrors', '鞋柜镜子', 130, { space: 'soft', responsibility: 'owner' }),
+      item('appliance-digital-piano', '罗兰 FP40 电钢琴', 4000, { space: 'soft', responsibility: 'owner' }),
+      item('appliance-makeup-mirror', '觅光化妆镜', 115, { space: 'soft', responsibility: 'owner' }),
       item('furniture-reserve', '未知项备用', 2000, {
         note: '预留预算，尚未视为实际消费', space: 'soft', responsibility: 'owner', status: 'reserve'
-      })
+      }),
+      item('furniture-child-drawers', '儿童房抽屉柜', 500, { space: 'soft', responsibility: 'owner', status: 'later' }),
+      item('furniture-sofa-bed', '书房沙发床', 2000, { space: 'soft', responsibility: 'owner', status: 'later' }),
+      item('furniture-gaming-chairs', '西昊 B300 Pro 2', 800, { space: 'soft', responsibility: 'owner', status: 'later' }),
+      item('furniture-rug', '地毯', 1000, { space: 'soft', responsibility: 'owner', status: 'later' })
     ]
   },
   {
@@ -225,8 +222,6 @@ export const expenseGroups = [
     name: '入住后待购',
     description: '适合入住后或购物节再购买，尚未计入当前投入',
     items: [
-      item('later-oven', '米家烤箱', 1500, { space: 'later', responsibility: 'owner', status: 'later' }),
-      item('later-dehumidifier', '除湿机', 1000, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-trampoline', '蹦床', 1000, { space: 'later', responsibility: 'owner', status: 'later' }),
       item('later-disposal', '垃圾处理器', 1200, { space: 'later', responsibility: 'owner', status: 'later' })
     ]
