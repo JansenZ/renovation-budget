@@ -185,6 +185,7 @@ export const expenseGroups = [
       item('furniture-window-film', '卫生间窗户贴膜', 60, { space: 'soft', responsibility: 'owner' }),
       item('furniture-study-drawers', '书房抽屉柜', 500, { space: 'soft', responsibility: 'owner' }),
       item('furniture-sihoo-chair', '西昊 B300 Pro 人体工学椅', 700, { space: 'soft', responsibility: 'owner' }),
+      item('furniture-gaming-chairs', '永艺沃客 300 Pro+', 719, { space: 'soft', responsibility: 'owner' }),
       item('furniture-coffee-table', '客厅茶几', 400, { space: 'soft', responsibility: 'owner' }),
       item('furniture-entry-mirror', '门厅镜子', 200, { space: 'soft', responsibility: 'owner' }),
       item('furniture-bay-window-set', '飘窗垫＋坐垫＋茶桌', 300, { space: 'soft', responsibility: 'owner' }),
@@ -216,7 +217,6 @@ export const expenseGroups = [
       }),
       item('furniture-child-drawers', '儿童房抽屉柜', 500, { space: 'soft', responsibility: 'owner', status: 'later' }),
       item('furniture-sofa-bed', '书房沙发床', 2000, { space: 'soft', responsibility: 'owner', status: 'later' }),
-      item('furniture-gaming-chairs', '西昊 B300 Pro 2', 800, { space: 'soft', responsibility: 'owner', status: 'later' }),
       item('furniture-rug', '地毯', 1000, { space: 'soft', responsibility: 'owner', status: 'later' })
     ]
   }
